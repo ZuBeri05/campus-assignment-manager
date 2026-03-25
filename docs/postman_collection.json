@@ -1,0 +1,84 @@
+{
+  "info": {
+    "name": "Campus Assignment Manager API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Send Code",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": "{{baseUrl}}/api/auth/send-code",
+        "body": {"mode": "raw", "raw": "{\"email\":\"user@example.com\"}"}
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": "{{baseUrl}}/api/auth/login",
+        "body": {"mode": "raw", "raw": "{\"email\":\"user@example.com\",\"code\":\"123456\"}"}
+      }
+    },
+    {
+      "name": "Admin - Get SMTP",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/admin/settings/smtp"
+      }
+    },
+    {
+      "name": "Admin - Save SMTP",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": "{{baseUrl}}/api/admin/settings/smtp",
+        "body": {"mode": "raw", "raw": "{\"host\":\"smtp.example.com\",\"port\":\"587\",\"username\":\"xxx\",\"password\":\"xxx\",\"ssl\":\"false\",\"tls\":\"true\",\"enabled\":\"true\"}"}
+      }
+    },
+    {
+      "name": "Assignments - Create",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": "{{baseUrl}}/api/assignments",
+        "body": {"mode": "raw", "raw": "{\"courseId\":1,\"title\":\"HW1\",\"description\":\"desc\",\"dueAt\":\"2026-03-30T23:59:59\",\"allowedTypes\":\"pdf,zip\",\"maxSizeBytes\":10485760,\"requiredFiles\":\"README.md\"}"}
+      }
+    },
+    {
+      "name": "Submissions - JSON",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "X-User-Email", "value": "student@example.com"}],
+        "url": "{{baseUrl}}/api/submissions",
+        "body": {"mode": "raw", "raw": "{\"assignmentId\":1,\"note\":\"my submission\",\"filename\":\"hw1.zip\",\"sizeBytes\":12345}"}
+      }
+    },
+    {
+      "name": "Similarity - Compare",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/similarity/compare?a=1&b=2&textA=hello&textB=hello world"
+      }
+    },
+    {
+      "name": "Grades - Grade",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/grades?submissionId=1&score=95&comment=good"
+      }
+    },
+    {
+      "name": "Notifications - List",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/notifications?userId=1"
+      }
+    }
+  ],
+  "variable": [
+    {"key": "baseUrl", "value": "http://localhost:8080"}
+  ]
+}
