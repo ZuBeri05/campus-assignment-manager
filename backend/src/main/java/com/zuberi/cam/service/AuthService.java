@@ -53,7 +53,11 @@ public class AuthService {
             User u = new User();
             u.setEmail(email);
             u.setName(email.split("@")[0]);
-            Role student = roleRepository.findByName("STUDENT").orElseThrow();
+            Role student = roleRepository.findByName("STUDENT").orElseGet(() -> {
+                Role r = new Role();
+                r.setName("STUDENT");
+                return roleRepository.save(r);
+            });
             u.getRoles().add(student);
             return userRepository.save(u);
         });
