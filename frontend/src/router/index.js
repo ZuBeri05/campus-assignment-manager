@@ -8,15 +8,23 @@ import SimilarityCompare from '../views/SimilarityCompare.vue'
 import GradeView from '../views/GradeView.vue'
 import NotificationView from '../views/NotificationView.vue'
 
+import MainLayout from '../layouts/MainLayout.vue'
+
 const routes = [
   { path: '/', redirect: '/login' },
   { path: '/login', component: LoginView },
-  { path: '/admin/settings', component: AdminSettings },
-  { path: '/assignments/new', component: AssignmentCreate },
-  { path: '/submissions/new', component: SubmissionCreate },
-  { path: '/similarity', component: SimilarityCompare },
-  { path: '/grades', component: GradeView },
-  { path: '/notifications', component: NotificationView }
+  {
+    path: '/',
+    component: MainLayout,
+    children: [
+      { path: '/admin/settings', component: AdminSettings },
+      { path: '/assignments/new', component: AssignmentCreate },
+      { path: '/submissions/new', component: SubmissionCreate },
+      { path: '/similarity', component: SimilarityCompare },
+      { path: '/grades', component: GradeView },
+      { path: '/notifications', component: NotificationView }
+    ]
+  }
 ]
 
 const router = createRouter({
