@@ -25,3 +25,5 @@ spring:
 app:
   smtp:
     enabled: false
+  jwt:
+    secret: CHANGE_ME_SECRET
