@@ -5,6 +5,8 @@ import AdminSettings from '../views/AdminSettings.vue'
 import AssignmentCreate from '../views/AssignmentCreate.vue'
 import SubmissionCreate from '../views/SubmissionCreate.vue'
 import SimilarityCompare from '../views/SimilarityCompare.vue'
+import GradeView from '../views/GradeView.vue'
+import NotificationView from '../views/NotificationView.vue'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -12,7 +14,9 @@ const routes = [
   { path: '/admin/settings', component: AdminSettings },
   { path: '/assignments/new', component: AssignmentCreate },
   { path: '/submissions/new', component: SubmissionCreate },
-  { path: '/similarity', component: SimilarityCompare }
+  { path: '/similarity', component: SimilarityCompare },
+  { path: '/grades', component: GradeView },
+  { path: '/notifications', component: NotificationView }
 ]
 
 const router = createRouter({
