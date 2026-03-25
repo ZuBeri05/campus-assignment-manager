@@ -11,4 +11,5 @@ public class SubmitRequest {
     // simplified: file info (in real scenario use multipart upload)
     private String filename;
     private Long sizeBytes;
+    private String storagePath;
 }

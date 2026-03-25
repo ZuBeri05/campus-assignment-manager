@@ -3,16 +3,13 @@
     <h2>提交作业</h2>
     <el-form>
       <el-form-item label="作业ID">
-        <el-input v-model="form.assignmentId" />
+        <el-input v-model="assignmentId" />
       </el-form-item>
-      <el-form-item label="文件名">
-        <el-input v-model="form.filename" />
-      </el-form-item>
-      <el-form-item label="文件大小(字节)">
-        <el-input v-model="form.sizeBytes" />
+      <el-form-item label="选择文件">
+        <input type="file" @change="onFile" />
       </el-form-item>
       <el-form-item label="备注">
-        <el-input type="textarea" v-model="form.note" />
+        <el-input type="textarea" v-model="note" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submit">提交</el-button>
@@ -22,19 +19,25 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { ref } from 'vue'
 import http from '../api/http'
 
-const form = reactive({
-  assignmentId: '',
-  filename: '',
-  sizeBytes: '',
-  note: ''
-})
+const assignmentId = ref('')
+const note = ref('')
+const fileRef = ref(null)
+
+const onFile = (e) => {
+  fileRef.value = e.target.files[0]
+}
 
 const submit = async () => {
-  await http.post('/submissions', form, {
-    headers: { 'X-User-Email': 'student@example.com' }
+  const form = new FormData()
+  form.append('assignmentId', assignmentId.value)
+  form.append('note', note.value)
+  form.append('file', fileRef.value)
+
+  await http.post('/upload/submission', form, {
+    headers: { 'X-User-Email': 'student@example.com', 'Content-Type': 'multipart/form-data' }
   })
 }
 </script>

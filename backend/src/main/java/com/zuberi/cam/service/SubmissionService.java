@@ -37,7 +37,7 @@ public class SubmissionService {
         file.setSubmission(sub);
         file.setFilename(req.getFilename());
         file.setSizeBytes(req.getSizeBytes());
-        file.setStoragePath("/tmp/" + req.getFilename());
+        file.setStoragePath(req.getStoragePath() != null ? req.getStoragePath() : ("/tmp/" + req.getFilename()));
         fileRepository.save(file);
 
         return sub;
