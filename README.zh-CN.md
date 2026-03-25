@@ -40,6 +40,11 @@ npm run dev
 ## 🔐 登录与 SMTP
 - 登录使用邮箱验证码
 - SMTP 配置在后台页面：`/admin/settings`
+- **开发模式（无需 SMTP）**
+  ```bash
+  CAM_DEV_MODE=true mvn spring-boot:run
+  ```
+  验证码会打印在后端日志中。
 
 ## 📄 文档
 - 需求说明：`docs/requirements.md`

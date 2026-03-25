@@ -43,6 +43,11 @@ npm run dev
 - Email login uses OTP codes.
 - SMTP settings are stored in DB and configured via admin page:
   - `/admin/settings`
+- **Dev mode (no SMTP):**
+  ```bash
+  CAM_DEV_MODE=true mvn spring-boot:run
+  ```
+  The OTP code will be printed in backend logs.
 
 ## 📄 Docs
 - Requirements: `docs/requirements.md`

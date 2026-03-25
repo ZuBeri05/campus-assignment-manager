@@ -30,7 +30,12 @@ public class AuthService {
         emailCode.setExpiresAt(LocalDateTime.now().plusMinutes(10));
         emailCodeRepository.save(emailCode);
 
-        mailService.send(email, "Your login code", "Your code: " + code);
+        String devMode = System.getenv().getOrDefault("CAM_DEV_MODE", "false");
+        if (Boolean.parseBoolean(devMode)) {
+            System.out.println("[DEV OTP] " + email + " -> " + code);
+        } else {
+            mailService.send(email, "Your login code", "Your code: " + code);
+        }
     }
 
     public String login(String email, String code) {
