@@ -48,6 +48,9 @@ npm run dev
   CAM_DEV_MODE=true mvn spring-boot:run
   ```
   The OTP code will be printed in backend logs.
+- **Default admin (dev):**
+  - email: `admin@local`
+  - request OTP (dev mode prints it in logs)
 
 ## 📄 Docs
 - Requirements: `docs/requirements.md`

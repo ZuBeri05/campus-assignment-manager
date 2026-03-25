@@ -45,6 +45,9 @@ npm run dev
   CAM_DEV_MODE=true mvn spring-boot:run
   ```
   验证码会打印在后端日志中。
+- **默认管理员（开发环境）**
+  - 邮箱：`admin@local`
+  - 发送验证码（开发模式日志输出）
 
 ## 📄 文档
 - 需求说明：`docs/requirements.md`
