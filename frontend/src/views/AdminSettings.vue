@@ -25,13 +25,25 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, onMounted } from 'vue'
+import http from '../api/http'
+
 const form = reactive({
   host: '',
-  port: 587,
+  port: '587',
   username: '',
   password: '',
-  enabled: false
+  enabled: false,
+  ssl: false,
+  tls: true
 })
-const save = () => { /* TODO */ }
+
+onMounted(async () => {
+  const res = await http.get('/admin/settings/smtp')
+  Object.assign(form, res.data)
+})
+
+const save = async () => {
+  await http.post('/admin/settings/smtp', form)
+}
 </script>

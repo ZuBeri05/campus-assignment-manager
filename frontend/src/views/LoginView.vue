@@ -20,8 +20,17 @@
 
 <script setup>
 import { ref } from 'vue'
+import http from '../api/http'
+
 const email = ref('')
 const code = ref('')
-const sendCode = () => { /* TODO */ }
-const login = () => { /* TODO */ }
+
+const sendCode = async () => {
+  await http.post('/auth/send-code', { email: email.value })
+}
+
+const login = async () => {
+  const res = await http.post('/auth/login', { email: email.value, code: code.value })
+  localStorage.setItem('token', res.data.token)
+}
 </script>
