@@ -21,7 +21,10 @@
 <script setup>
 import { ref } from 'vue'
 import http from '../api/http'
+import { setToken, getRoles } from '../utils/auth'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const email = ref('')
 const code = ref('')
 
@@ -31,6 +34,12 @@ const sendCode = async () => {
 
 const login = async () => {
   const res = await http.post('/auth/login', { email: email.value, code: code.value })
-  localStorage.setItem('token', res.data.token)
+  setToken(res.data.token)
+  const roles = getRoles()
+  if (roles.includes('TEACHER') || roles.includes('ADMIN')) {
+    router.push('/teacher/assignments/new')
+  } else {
+    router.push('/student/submissions/new')
+  }
 }
 </script>
