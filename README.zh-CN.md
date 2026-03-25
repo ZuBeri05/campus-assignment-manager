@@ -47,6 +47,36 @@ npm run dev
 - API 文档：`docs/api.md`
 - Postman 集合：`docs/postman_collection.json`
 
+## 🧭 架构（概览）
+```
+[Vue 前端] -> [Spring Boot API] -> [MySQL]
+                      |
+                      -> [SMTP 邮件服务]
+```
+
+## 📷 截图
+- （请在此补充截图）
+
+## 🧪 本地部署
+### 1）数据库
+```sql
+CREATE DATABASE cam DEFAULT CHARACTER SET utf8mb4;
+```
+修改 `backend/src/main/resources/application.yml` 的数据库配置。
+
+### 2）后端
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+### 3）前端
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
 ## 📌 路线图
 - 细粒度权限（RBAC）
 - 真实对象存储

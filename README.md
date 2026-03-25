@@ -50,6 +50,36 @@ npm run dev
 - API docs: `docs/api.md`
 - Postman: `docs/postman_collection.json`
 
+## 🧭 Architecture (High-level)
+```
+[Vue Frontend] -> [Spring Boot API] -> [MySQL]
+                         |
+                         -> [SMTP Service]
+```
+
+## 📷 Screenshots
+- (Add screenshots here)
+
+## 🧪 Local Deployment
+### 1) Database
+```sql
+CREATE DATABASE cam DEFAULT CHARACTER SET utf8mb4;
+```
+Update `backend/src/main/resources/application.yml` with your DB credentials.
+
+### 2) Backend
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+### 3) Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
 ## 📌 Roadmap
 - Fine-grained RBAC permissions
 - Real file storage (S3/OSS)
