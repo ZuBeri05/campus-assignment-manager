@@ -5,6 +5,7 @@ import com.zuberi.cam.entity.Submission;
 import com.zuberi.cam.service.FileStorageService;
 import com.zuberi.cam.service.SubmissionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +17,7 @@ public class UploadController {
     private final SubmissionService submissionService;
 
     @PostMapping("/submission")
+    @PreAuthorize("hasAnyRole('STUDENT')")
     public Submission upload(@RequestHeader("X-User-Email") String email,
                              @RequestParam Long assignmentId,
                              @RequestParam(required = false) String note,

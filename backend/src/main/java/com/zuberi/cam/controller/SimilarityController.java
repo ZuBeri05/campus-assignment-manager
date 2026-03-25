@@ -6,6 +6,7 @@ import com.zuberi.cam.repository.SimilarityReportRepository;
 import com.zuberi.cam.repository.SubmissionRepository;
 import com.zuberi.cam.service.SimilarityService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class SimilarityController {
     private final SimilarityReportRepository reportRepository;
 
     @PostMapping("/compare")
+    @PreAuthorize("hasAnyRole('TEACHER','ADMIN')")
     public SimilarityReport compare(@RequestParam Long a, @RequestParam Long b,
                                     @RequestParam String textA, @RequestParam String textB) {
         double score = similarityService.similarity(textA, textB);
@@ -33,6 +35,7 @@ public class SimilarityController {
     }
 
     @GetMapping("/reports/{assignmentId}")
+    @PreAuthorize("hasAnyRole('TEACHER','ADMIN')")
     public List<SimilarityReport> list(@PathVariable Long assignmentId) {
         return reportRepository.findAll().stream()
                 .filter(r -> r.getAssignment().getId().equals(assignmentId))
