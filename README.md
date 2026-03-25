@@ -2,6 +2,8 @@
 
 MVP for a campus assignment management system (Software Engineering project).
 
+- 中文说明：**[README.zh-CN.md](README.zh-CN.md)**
+
 ## Tech Stack
 - Backend: Java 17, Spring Boot 3, MySQL 8
 - Frontend: Vue 3, Vite, Element Plus
