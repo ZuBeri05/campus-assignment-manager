@@ -28,9 +28,8 @@ public class UploadController {
         req.setFilename(file.getOriginalFilename());
         req.setSizeBytes(file.getSize());
 
+        req.setStoragePath(path);
         Submission sub = submissionService.submit(email, req);
-        // overwrite storage path
-        sub.getFiles().forEach(f -> f.setStoragePath(path));
         return sub;
     }
 }
