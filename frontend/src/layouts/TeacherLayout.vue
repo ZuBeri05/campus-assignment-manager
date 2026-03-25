@@ -7,6 +7,7 @@
         <el-menu-item index="/teacher/grades">评分</el-menu-item>
         <el-menu-item index="/teacher/notifications">通知</el-menu-item>
         <el-menu-item index="/admin/settings">系统设置</el-menu-item>
+        <el-menu-item index="/admin/users">用户管理</el-menu-item>
       </el-menu>
     </el-aside>
     <el-container>

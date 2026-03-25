@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import AdminSettings from '../views/AdminSettings.vue'
+import AdminUsers from '../views/AdminUsers.vue'
 
 import AssignmentCreate from '../views/AssignmentCreate.vue'
 import SubmissionCreate from '../views/SubmissionCreate.vue'
@@ -41,7 +42,8 @@ const routes = [
     component: TeacherLayout,
     meta: { requiresAuth: true, roles: ['ADMIN'] },
     children: [
-      { path: '/admin/settings', component: AdminSettings }
+      { path: '/admin/settings', component: AdminSettings },
+      { path: '/admin/users', component: AdminUsers }
     ]
   }
 ]
